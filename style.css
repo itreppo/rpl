@@ -46,33 +46,6 @@ html{
 
 }
 
-[data-theme="light"]{
-
-    --bg-body:#eef2f8;
-    --bg-deep:#ffffff;
-    --bg-card:#ffffff;
-    --bg-card2:#f4f7fc;
-
-    --text-main:#0b1220;
-    --text-muted:#51607a;
-    --text-secondary:#334155;
-    --text-tertiary:#1e293b;
-    --text-faint:#64748b;
-
-    --header-bg:rgba(255,255,255,.85);
-
-    --terminal-green:#0a9463;
-    --hero-gradient-end:#0b1220;
-
-    --shine:rgba(0,0,0,.04);
-    --shine-strong:rgba(0,0,0,.12);
-
-    --glow-opacity:.08;
-    --accent-text:#0061c9;
-    --card-border-alpha:.4;
-
-}
-
 body{
 
     background:var(--bg-body);
@@ -1726,123 +1699,17 @@ html[dir="rtl"] .hero-buttons{
 }
 
 /* ==========================
-      THEME TOGGLE BUTTON
+      ACTIVE NAV LINK
 ========================== */
 
-#themeBtn{
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    width:64px;
-
-    height:34px;
-
-    padding:0 8px;
-
-    background:var(--bg-card);
-
-    border:1px solid rgba(0,108,255,.35);
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    overflow:hidden;
-
-    transition:.3s;
-
-}
-
-#themeBtn:hover{
-
-    border-color:#00a8ff;
-
-}
-
-#themeBtn i{
-
-    position:relative;
-
-    z-index:2;
-
-    font-size:14px;
-
-    transition:.3s;
-
-}
-
-#themeBtn .fa-moon{
+nav a.active{
 
     color:var(--accent-text);
 
 }
 
-#themeBtn .fa-sun{
+nav a.active::after{
 
-    color:#f5b942;
-
-}
-
-#themeBtn::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:3px;
-
-    left:3px;
-
-    width:26px;
-
-    height:26px;
-
-    border-radius:50%;
-
-    background:var(--accent);
-
-    transition:.35s ease;
-
-    z-index:1;
-
-}
-
-#themeBtn.light::before{
-
-    transform:translateX(30px);
-
-    background:#f5b942;
-
-}
-
-@media (max-width:768px){
-
-#themeBtn{
-
-    width:56px;
-
-    height:30px;
-
-}
-
-#themeBtn::before{
-
-    width:22px;
-
-    height:22px;
-
-}
-
-#themeBtn.light::before{
-
-    transform:translateX(26px);
-
-}
+    width:100%;
 
 }
