@@ -17,6 +17,12 @@ content="Cyber Security, Ethical Hacking, Linux, Programming, Security Research"
 <meta name="author"
 content="RPL">
 
+<!-- Security headers (best-effort via meta; real HTTP headers should also be set at the hosting/CDN level, see notes at the end of this file) -->
+<meta http-equiv="Content-Security-Policy"
+content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
 <link rel="icon"
 href="RPL.png">
 
@@ -49,7 +55,20 @@ rel="stylesheet">
 href="style.css">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+crossorigin="anonymous"
+referrerpolicy="no-referrer">
+
+<script>
+(function(){
+    try{
+        var savedTheme = localStorage.getItem("theme");
+        if(savedTheme === "light"){
+            document.documentElement.setAttribute("data-theme","light");
+        }
+    }catch(e){}
+})();
+</script>
 
 </head>
 
@@ -112,6 +131,11 @@ CYBER SECURITY
     <a href="#skills" data-lang="nav_skills">Skills</a>
 
     <a href="#contact" data-lang="nav_contact">Contact</a>
+
+    <button id="themeBtn" aria-label="Toggle light / dark mode" title="Toggle light / dark mode">
+        <i class="fa-solid fa-moon"></i>
+        <i class="fa-solid fa-sun"></i>
+    </button>
 
     <button id="langBtn" aria-label="Change language" title="Change language">
         <i class="fa-solid fa-language"></i>
@@ -213,8 +237,6 @@ System : Secure ✓
 
     <div class="section-title">
 
-        <span>01</span>
-
         <h2 data-lang="about_title">About Me</h2>
 
     </div>
@@ -227,22 +249,19 @@ System : Secure ✓
 
             <p data-lang="about_who_p1">
 
-                Hello, I'm Saged,
-                founder of RPL Cyber Security.
-                I'm passionate about cybersecurity,
-                ethical hacking,
-                programming,
-                Linux,
-                Windows
-                and security research.
+                Hi, I'm Saged — founder of RPL Cyber Security.
+                I focus on ethical hacking, security research,
+                and building practical solutions across
+                Linux and Windows environments.
 
             </p>
 
             <p data-lang="about_who_p2">
 
-                My goal is to build secure digital
-                solutions and continuously improve
-                my cybersecurity skills.
+                My mission is simple: build secure, reliable
+                digital solutions and keep sharpening my skills
+                so RPL can offer real value to the people and
+                businesses we work with.
 
             </p>
 
@@ -250,107 +269,23 @@ System : Secure ✓
 
         <div class="about-card">
 
-            <h3 data-lang="about_focus_title">Current Focus</h3>
+            <h3 data-lang="about_features_title">Our Features</h3>
 
             <ul>
 
-                <li data-lang="about_focus_1">✔ Security Research</li>
+                <li data-lang="about_feature_1">⚡ Fast & Reliable Support</li>
 
-                <li data-lang="about_focus_2">✔ Linux Systems</li>
+                <li data-lang="about_feature_2">🔬 Continuous Security Research</li>
 
-                <li data-lang="about_focus_3">✔ Ethical Hacking</li>
+                <li data-lang="about_feature_3">🛠️ Hands-on Practical Experience</li>
 
-                <li data-lang="about_focus_4">✔ Python Programming</li>
+                <li data-lang="about_feature_4">🎯 Tailored Solutions</li>
 
-                <li data-lang="about_focus_5">✔ Network Security</li>
+                <li data-lang="about_feature_5">🤝 Honest & Trustworthy</li>
 
-                <li data-lang="about_focus_6">✔ Web Security</li>
+                <li data-lang="about_feature_6">📈 Always Up To Date</li>
 
             </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= STATS ================= -->
-
-<section id="stats">
-
-    <div class="section-title">
-
-        <span>02</span>
-
-        <h2 data-lang="stats_title">Statistics</h2>
-
-    </div>
-
-    <div class="stats-grid">
-
-        <div class="stat-box">
-
-            <h2 class="counter"
-                data-target="15">
-
-                0
-
-            </h2>
-
-            <p data-lang="stat_projects_label">
-
-                Projects
-
-            </p>
-
-        </div>
-
-        <div class="stat-box">
-
-            <h2 class="counter"
-                data-target="300">
-
-                0
-
-            </h2>
-
-            <p data-lang="stat_hours_label">
-
-                Hours Learning
-
-            </p>
-
-        </div>
-
-        <div class="stat-box">
-
-            <h2>
-
-                24/7
-
-            </h2>
-
-            <p data-lang="stat_research_label">
-
-                Research
-
-            </p>
-
-        </div>
-
-        <div class="stat-box">
-
-            <h2>
-
-                100%
-
-            </h2>
-
-            <p data-lang="stat_passion_label">
-
-                Passion
-
-            </p>
 
         </div>
 
@@ -363,8 +298,6 @@ System : Secure ✓
 <section id="skills">
 
     <div class="section-title">
-
-        <span>03</span>
 
         <h2 data-lang="skills_title">Skills</h2>
 
@@ -388,9 +321,8 @@ System : Secure ✓
 
             <p data-lang="skill1_desc">
 
-                Security Fundamentals,
-                Blue Team,
-                Research.
+                Solid grounding in security fundamentals,
+                blue team practices, and ongoing research.
 
             </p>
 
@@ -412,9 +344,8 @@ System : Secure ✓
 
             <p data-lang="skill2_desc">
 
-                Kali Linux,
-                Ubuntu,
-                Bash.
+                Comfortable working across Kali Linux,
+                Ubuntu, and the Bash command line.
 
             </p>
 
@@ -436,10 +367,8 @@ System : Secure ✓
 
             <p data-lang="skill3_desc">
 
-                Python,
-                JavaScript,
-                HTML,
-                CSS.
+                Writing tools and scripts in Python,
+                JavaScript, HTML, and CSS.
 
             </p>
 
@@ -461,10 +390,8 @@ System : Secure ✓
 
             <p data-lang="skill4_desc">
 
-                TCP/IP,
-                Routing,
-                Firewalls,
-                Wireshark.
+                Understanding TCP/IP, routing, firewalls,
+                and traffic analysis with Wireshark.
 
             </p>
 
@@ -486,9 +413,8 @@ System : Secure ✓
 
             <p data-lang="skill5_desc">
 
-                Web Testing,
-                OSINT,
-                Enumeration.
+                Web application testing, OSINT gathering,
+                and thorough enumeration.
 
             </p>
 
@@ -510,9 +436,8 @@ System : Secure ✓
 
             <p data-lang="skill6_desc">
 
-                Burp Suite,
-                Nmap,
-                Metasploit.
+                Hands-on experience with Burp Suite,
+                Nmap, and Metasploit.
 
             </p>
 
@@ -522,104 +447,149 @@ System : Secure ✓
 
 </section>
 
-<!-- ================= CERTIFICATES ================= -->
+<!-- ================= SERVICES ================= -->
 
-<section id="certificates">
-
-    <div class="section-title">
-
-        <span>04</span>
-
-        <h2 data-lang="certificates_title">Learning Journey</h2>
-
-    </div>
-
-    <div class="certificates-grid">
-
-        <div class="certificate-card done">
-
-            <h3>✅ TryHackMe</h3>
-
-            <p data-lang="cert1_desc">
-
-                Learning Platform
-
-            </p>
-
-        </div>
-
-        <div class="certificate-card done">
-
-            <h3>✅ Hack The Box</h3>
-
-            <p data-lang="cert2_desc">
-
-                Labs & Practice
-
-            </p>
-
-        </div>
-
-        <div class="certificate-card progress">
-
-            <h3>📖 Security+</h3>
-
-            <p data-lang="cert3_desc">
-
-                Currently Studying
-
-            </p>
-
-        </div>
-
-        <div class="certificate-card target">
-
-            <h3>🎯 PNPT</h3>
-
-            <p data-lang="cert4_desc">
-
-                Future Goal
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= JOURNEY ================= -->
-
-<section id="journey">
+<section id="services">
 
     <div class="section-title">
 
-        <span>05</span>
-
-        <h2 data-lang="journey_title">Current Mission</h2>
+        <h2 data-lang="services_title">Our Services</h2>
 
     </div>
 
-    <div class="journey-box">
+    <div class="services-grid">
 
-<pre id="roadmap" data-lang="journey_box">
+        <div class="service-card">
 
-root@rpl:~$ roadmap
+            <div class="icon">
 
-✔ Learn Linux
-✔ Learn Networking
-✔ Learn Python
-✔ Security Research
-✔ Build Cyber Tools
-✔ Build RPL Company
+                🛡️
 
-Status:
-██████████░░ 80%
+            </div>
 
-Mission:
-Building Secure Digital Solutions.
+            <h3 data-lang="service1_title">
 
-</pre>
+                Security Assessment
+
+            </h3>
+
+            <p data-lang="service1_desc">
+
+                Vulnerability scanning and risk assessment for your systems and infrastructure.
+
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+
+                🔍
+
+            </div>
+
+            <h3 data-lang="service2_title">
+
+                Penetration Testing
+
+            </h3>
+
+            <p data-lang="service2_desc">
+
+                Ethical hacking to find and fix security weaknesses before attackers do.
+
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+
+                🌐
+
+            </div>
+
+            <h3 data-lang="service3_title">
+
+                Web Security
+
+            </h3>
+
+            <p data-lang="service3_desc">
+
+                Securing websites and web apps against common and advanced attacks.
+
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+
+                🐧
+
+            </div>
+
+            <h3 data-lang="service4_title">
+
+                Linux Server Hardening
+
+            </h3>
+
+            <p data-lang="service4_desc">
+
+                Configuring and hardening Linux servers to reduce attack surface.
+
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+
+                💻
+
+            </div>
+
+            <h3 data-lang="service5_title">
+
+                Custom Security Tools
+
+            </h3>
+
+            <p data-lang="service5_desc">
+
+                Building custom scripts and tools with Python for security tasks.
+
+            </p>
+
+        </div>
+
+        <div class="service-card">
+
+            <div class="icon">
+
+                📋
+
+            </div>
+
+            <h3 data-lang="service6_title">
+
+                Security Consulting
+
+            </h3>
+
+            <p data-lang="service6_desc">
+
+                Guidance and best practices to keep your digital environment secure.
+
+            </p>
+
+        </div>
 
     </div>
 
@@ -630,8 +600,6 @@ Building Secure Digital Solutions.
 <section id="contact">
 
     <div class="section-title">
-
-        <span>06</span>
 
         <h2 data-lang="contact_title">Contact Me</h2>
 
@@ -655,11 +623,11 @@ Building Secure Digital Solutions.
 
             <p>
 
-                repocompany@gmail.com
+                repoacompany@gmail.com
 
             </p>
 
-            <a href="mailto:repocompany@gmail.com"
+            <a href="mailto:repoacompany@gmail.com"
                data-lang="btn_send_email">
 
                 Send Email
@@ -692,6 +660,7 @@ Building Secure Digital Solutions.
 
             <a href="https://discord.gg/FKMPZngNMP"
                target="_blank"
+               rel="noopener noreferrer"
                data-lang="btn_join_server">
 
                 Join Server
@@ -724,9 +693,43 @@ Building Secure Digital Solutions.
 
             <a href="https://wa.me/201203408153"
                target="_blank"
+               rel="noopener noreferrer"
                data-lang="btn_chat_now">
 
                 Chat Now
+
+            </a>
+
+        </div>
+
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+
+                📸
+
+            </div>
+
+            <h3 data-lang="contact_instagram_title">
+
+                Instagram
+
+            </h3>
+
+            <p data-lang="contact_instagram_desc">
+
+                Follow Us
+
+            </p>
+
+            <a href="https://instagram.com/repoacompany"
+               target="_blank"
+               rel="noopener noreferrer"
+               data-lang="btn_follow_now">
+
+                Follow
 
             </a>
 
