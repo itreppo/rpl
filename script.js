@@ -312,46 +312,6 @@ langBtn.onclick = () => {
 };
 
 /* ==========================
-   Theme (Dark / Light) Toggle
-========================== */
-
-const themeBtn = document.getElementById("themeBtn");
-
-let currentTheme = localStorage.getItem("theme") || "dark";
-
-function applyTheme(theme){
-
-    if(theme === "light"){
-
-        document.documentElement.setAttribute("data-theme","light");
-        themeBtn.classList.add("light");
-
-    } else {
-
-        document.documentElement.removeAttribute("data-theme");
-        themeBtn.classList.remove("light");
-
-    }
-
-    localStorage.setItem("theme", theme);
-
-}
-
-themeBtn.addEventListener("click", (e) => {
-
-    // Left half (moon) -> dark mode, right half (sun) -> light mode
-    const rect = themeBtn.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-
-    currentTheme = clickX < rect.width / 2 ? "dark" : "light";
-
-    applyTheme(currentTheme);
-
-});
-
-applyTheme(currentTheme);
-
-/* ==========================
    Loader
 ========================== */
 
