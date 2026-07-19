@@ -14,58 +14,58 @@ en:{
 
 nav_home:"Home",
 nav_about:"About",
-nav_skills:"Skills",
+nav_services:"Services",
+nav_projects:"Projects",
 nav_contact:"Contact",
 
 loader_text:"Initializing Secure Environment...",
 
 hero_terminal:"root@rpl:~$ system_online",
-hero_desc:"Building secure digital solutions through Cyber Security, Programming, Security Research and Ethical Hacking.",
+hero_desc:"RPL Cyber Security is an early-stage startup building practical cyber security solutions through hands-on research, ethical hacking, and secure software development. We are still growing — and building in the open.",
 
-btn_skills:"Explore Skills",
-btn_contact:"Contact Me",
+btn_explore:"Explore RPL",
+btn_contact:"Contact Us",
 
-about_title:"About Me",
-about_who_title:"Who Am I?",
-about_who_p1:"Hi, I'm Saged — founder of RPL Cyber Security. I focus on ethical hacking, security research, and building practical solutions across Linux and Windows environments.",
-about_who_p2:"My mission is simple: build secure, reliable digital solutions and keep sharpening my skills so RPL can offer real value to the people and businesses we work with.",
-about_features_title:"Our Features",
-about_feature_1:"⚡ Fast & Reliable Support",
-about_feature_2:"🔬 Continuous Security Research",
-about_feature_3:"🛠️ Hands-on Practical Experience",
-about_feature_4:"🎯 Tailored Solutions",
-about_feature_5:"🤝 Honest & Trustworthy",
-about_feature_6:"📈 Always Up To Date",
+about_title:"About RPL",
+about_who_title:"Who Is RPL?",
+about_who_p1:"RPL Cyber Security is an early-stage cyber security startup. We are currently in our building phase, laying the groundwork for the research, tools, and services we plan to offer.",
+about_who_p2:"Our work today is focused on hands-on learning, security research, and developing the practical skills that will shape RPL's future services.",
+about_vision_title:"Our Vision",
+about_vision_p1:"To grow into a trusted cyber security brand that combines continuous research with practical, real-world solutions — helping individuals and businesses stay secure in an evolving digital landscape.",
+about_mission_title:"Our Mission",
+about_mission_p1:"To build a solid foundation of security expertise through ethical hacking practice, security research, and secure software development, and to grow step by step into a team capable of delivering reliable security services.",
 
-skills_title:"Skills",
-skill1_title:"Cyber Security",
-skill1_desc:"Solid grounding in security fundamentals, blue team practices, and ongoing research.",
-skill2_title:"Linux",
-skill2_desc:"Comfortable working across Kali Linux, Ubuntu, and the Bash command line.",
-skill3_title:"Programming",
-skill3_desc:"Writing tools and scripts in Python, JavaScript, HTML, and CSS.",
-skill4_title:"Network Security",
-skill4_desc:"Understanding TCP/IP, routing, firewalls, and traffic analysis with Wireshark.",
-skill5_title:"Ethical Hacking",
-skill5_desc:"Web application testing, OSINT gathering, and thorough enumeration.",
-skill6_title:"Security Tools",
-skill6_desc:"Hands-on experience with Burp Suite, Nmap, and Metasploit.",
+services_title:"Future Services",
+services_subtitle:"RPL is still growing. The services below are planned for future release as our team and expertise expand.",
+service1_title:"Penetration Testing",
+service1_desc:"Ethical hacking engagements to help identify and address security weaknesses before attackers do.",
+service2_title:"Security Consulting",
+service2_desc:"Guidance and best practices to help teams build and maintain a more secure digital environment.",
+service3_title:"Vulnerability Assessment",
+service3_desc:"Structured scanning and risk assessment for systems and infrastructure.",
+service4_title:"Secure Web Development",
+service4_desc:"Building websites and web applications with security best practices in mind from the start.",
+service5_title:"Linux Hardening",
+service5_desc:"Configuring and hardening Linux servers to reduce attack surface.",
+service6_title:"Security Automation",
+service6_desc:"Custom scripts and tools to automate repetitive security tasks.",
+service7_title:"Incident Response",
+service7_desc:"Rapid response support to help contain, investigate, and recover from security incidents.",
+service8_title:"Cloud Security",
+service8_desc:"Securing cloud environments and configurations against common misconfigurations and threats.",
 
-services_title:"Our Services",
-service1_title:"Security Assessment",
-service1_desc:"Vulnerability scanning and risk assessment for your systems and infrastructure.",
-service2_title:"Penetration Testing",
-service2_desc:"Ethical hacking to find and fix security weaknesses before attackers do.",
-service3_title:"Web Security",
-service3_desc:"Securing websites and web apps against common and advanced attacks.",
-service4_title:"Linux Server Hardening",
-service4_desc:"Configuring and hardening Linux servers to reduce attack surface.",
-service5_title:"Custom Security Tools",
-service5_desc:"Building custom scripts and tools with Python for security tasks.",
-service6_title:"Security Consulting",
-service6_desc:"Guidance and best practices to keep your digital environment secure.",
+projects_title:"Our Projects",
+projects_subtitle:"Our projects are currently under development. More details will be shared as they take shape.",
+status_dev:"In Development",
+project1_title:"RPL Recon Toolkit",
+project1_desc:"An internal toolkit for reconnaissance and OSINT gathering during security research.",
+project2_title:"RPL Vulnerability Scanner",
+project2_desc:"A Python-based scanner concept for identifying common security misconfigurations.",
+project3_title:"RPL Automation Scripts",
+project3_desc:"A growing collection of scripts to automate routine security research tasks.",
 
-contact_title:"Contact Me",
+contact_title:"Contact RPL",
+contact_subtitle:"Have a question or want to follow our progress? Reach out to us through any of the channels below.",
 contact_email_title:"Email",
 btn_send_email:"Send Email",
 contact_discord_title:"Discord",
@@ -78,11 +78,10 @@ contact_instagram_title:"Instagram",
 contact_instagram_desc:"Follow Us",
 btn_follow_now:"Follow",
 
-footer_desc:"Building Secure Digital Solutions.",
+footer_desc:"Building the future of secure digital solutions.",
 footer_home:"Home",
-footer_skills:"Skills",
 footer_contact:"Contact",
-footer_copyright:"© 2026 RPL Cyber Security. All Rights Reserved."
+footer_rights:"All Rights Reserved."
 
 },
 
@@ -90,58 +89,58 @@ ar:{
 
 nav_home:"الرئيسية",
 nav_about:"من نحن",
-nav_skills:"المهارات",
+nav_services:"الخدمات",
+nav_projects:"المشاريع",
 nav_contact:"تواصل",
 
 loader_text:"جاري تهيئة البيئة الآمنة...",
 
-hero_terminal:"root@rpl:~$ النظام_متصل",
-hero_desc:"نبني حلولاً رقمية آمنة من خلال الأمن السيبراني والبرمجة والبحث الأمني والاختراق الأخلاقي.",
+hero_terminal:"root@rpl:~$ النظام_شغال",
+hero_desc:"إحنا RPL Cyber Security، شركة ناشئة لسه في أول خطواتها، وبنبني حلول أمن سيبراني عملية من خلال بحث تطبيقي واختراق أخلاقي وتطوير برمجيات آمنة. لسه في مرحلة البناء، وبنشارككم كل خطوة أول بأول.",
 
-btn_skills:"استكشف المهارات",
-btn_contact:"تواصل معي",
+btn_explore:"استكشف RPL",
+btn_contact:"كلمنا",
 
-about_title:"من نحن",
-about_who_title:"من أنا؟",
-about_who_p1:"أنا Saged، مؤسس RPL Cyber Security. أنا شغوف بالاختراق الأخلاقي والبحث الأمني، وبأبني حلول عملية فعلاً بتشتغل على بيئات لينكس وويندوز.",
-about_who_p2:"هدفي بسيط: أبني حلول رقمية آمنة وموثوقة، وأفضل أطور نفسي باستمرار عشان RPL تقدر تقدّم قيمة حقيقية للناس والشركات اللي بنتعامل معاها.",
-about_features_title:"مميزاتنا",
-about_feature_1:"⚡ دعم سريع وموثوق",
-about_feature_2:"🔬 بحث أمني مستمر",
-about_feature_3:"🛠️ خبرة عملية حقيقية",
-about_feature_4:"🎯 حلول مخصصة لاحتياجاتك",
-about_feature_5:"🤝 مصداقية وأمانة في التعامل",
-about_feature_6:"📈 مواكبة لآخر التهديدات والتقنيات",
+about_title:"مين احنا",
+about_who_title:"مين RPL؟",
+about_who_p1:"RPL Cyber Security شركة ناشئة في مجال الأمن السيبراني، دلوقتي بنبني الأساس بتاعنا، يعني بنركز على البحث والأدوات والخدمات اللي هنقدمها في المستقبل.",
+about_who_p2:"شغلنا حاليًا متركز على التعلم العملي والبحث الأمني، وبنطور المهارات اللي هتشكّل خدمات RPL في المستقبل.",
+about_vision_title:"رؤيتنا",
+about_vision_p1:"حلمنا إننا نبقى اسم موثوق في عالم الأمن السيبراني، ندمج فيه البحث المستمر مع حلول عملية وواقعية تساعد الأفراد والشركات يفضلوا آمنين في عالم رقمي بيتغير كل يوم.",
+about_mission_title:"مهمتنا",
+about_mission_p1:"بنبني نفسنا خطوة خطوة، من خلال الاختراق الأخلاقي والبحث الأمني وتطوير برمجيات آمنة، لحد ما نوصل لفريق قادر يقدّم خدمات أمنية تقدر تعتمد عليها.",
 
-skills_title:"المهارات",
-skill1_title:"الأمن السيبراني",
-skill1_desc:"أساسيات الأمن السيبراني، ممارسات الفريق الأزرق، والبحث المستمر.",
-skill2_title:"لينكس",
-skill2_desc:"شغل مريح على كالي لينكس وأوبونتو والتعامل مع الـ Bash.",
-skill3_title:"البرمجة",
-skill3_desc:"كتابة أدوات وسكربتات بلغات بايثون وجافاسكريبت و HTML و CSS.",
-skill4_title:"أمن الشبكات",
-skill4_desc:"فهم TCP/IP والتوجيه والجدران النارية وتحليل الترافيك بـ Wireshark.",
-skill5_title:"الاختراق الأخلاقي",
-skill5_desc:"اختبار تطبيقات الويب وجمع معلومات OSINT والاستكشاف الدقيق.",
-skill6_title:"أدوات أمنية",
-skill6_desc:"خبرة عملية بأدوات زي Burp Suite و Nmap و Metasploit.",
+services_title:"خدماتنا الجاية",
+services_subtitle:"RPL لسه في أول الطريق، والخدمات دي هنطرحها بعدين مع ما فريقنا وخبرتنا يكبروا.",
+service1_title:"اختبار الاختراق",
+service1_desc:"عمليات اختراق أخلاقي بتساعد نكتشف نقاط الضعف الأمنية ونعالجها قبل ما حد يستغلها.",
+service2_title:"استشارات أمنية",
+service2_desc:"إرشادات وأفضل الممارسات بتساعد الفرق يبنوا ويحافظوا على بيئة رقمية أكتر أمانًا.",
+service3_title:"تقييم الثغرات",
+service3_desc:"فحص منظم وتقييم مخاطر للأنظمة والبنية التحتية.",
+service4_title:"تطوير مواقع آمنة",
+service4_desc:"بناء مواقع وتطبيقات ويب مع مراعاة أفضل ممارسات الأمان من أول خطوة.",
+service5_title:"تحصين سيرفرات لينكس",
+service5_desc:"إعداد وتحصين سيرفرات لينكس عشان نقلل نقاط الاختراق المحتملة.",
+service6_title:"أتمتة العمليات الأمنية",
+service6_desc:"سكربتات وأدوات مخصصة لأتمتة المهام الأمنية المتكررة.",
+service7_title:"الاستجابة للحوادث الأمنية",
+service7_desc:"دعم سريع يساعدنا نحتوي الحادث الأمني ونحقق فيه ونرجع الأمور لطبيعتها.",
+service8_title:"أمن السحابة",
+service8_desc:"تأمين بيئات وإعدادات الكلاود من الأخطاء الشائعة والتهديدات.",
 
-services_title:"خدماتنا",
-service1_title:"تقييم الأمان",
-service1_desc:"فحص الثغرات وتقييم المخاطر لأنظمتك وبنيتك التحتية.",
-service2_title:"اختبار الاختراق",
-service2_desc:"اختراق أخلاقي لاكتشاف نقاط الضعف الأمنية وإصلاحها قبل المهاجمين.",
-service3_title:"أمن المواقع",
-service3_desc:"تأمين المواقع وتطبيقات الويب ضد الهجمات الشائعة والمتقدمة.",
-service4_title:"تحصين سيرفرات لينكس",
-service4_desc:"إعداد وتحصين سيرفرات لينكس لتقليل نقاط الاختراق المحتملة.",
-service5_title:"أدوات أمنية مخصصة",
-service5_desc:"بناء سكربتات وأدوات مخصصة ببايثون للمهام الأمنية.",
-service6_title:"استشارات أمنية",
-service6_desc:"إرشادات وأفضل الممارسات للحفاظ على بيئتك الرقمية آمنة.",
+projects_title:"مشاريعنا",
+projects_subtitle:"مشاريعنا لسه تحت التطوير، وهنشارككم التفاصيل أول ما تخلص.",
+status_dev:"قيد التطوير",
+project1_title:"RPL Recon Toolkit",
+project1_desc:"أداة داخلية بنجمع بيها معلومات استطلاعية وOSINT وقت البحث الأمني.",
+project2_title:"RPL Vulnerability Scanner",
+project2_desc:"فكرة أداة فحص ببايثون بتكتشف الأخطاء الأمنية الشائعة في الإعدادات.",
+project3_title:"RPL Automation Scripts",
+project3_desc:"مجموعة سكربتات بتكبر يوم بعد يوم، بتساعدنا نؤتمت مهام البحث الأمني الروتينية.",
 
-contact_title:"تواصل معي",
+contact_title:"تواصل معانا",
+contact_subtitle:"عندك سؤال أو حابب تتابعنا؟ كلمنا من أي قناة من دول.",
 contact_email_title:"البريد الإلكتروني",
 btn_send_email:"إرسال بريد",
 contact_discord_title:"ديسكورد",
@@ -154,11 +153,10 @@ contact_instagram_title:"إنستجرام",
 contact_instagram_desc:"تابعنا",
 btn_follow_now:"متابعة",
 
-footer_desc:"نبني حلولاً رقمية آمنة.",
+footer_desc:"بنبني مستقبل الحلول الرقمية الآمنة.",
 footer_home:"الرئيسية",
-footer_skills:"المهارات",
 footer_contact:"تواصل",
-footer_copyright:"© 2026 RPL Cyber Security. جميع الحقوق محفوظة."
+footer_rights:"جميع الحقوق محفوظة."
 
 }
 
@@ -169,19 +167,19 @@ footer_copyright:"© 2026 RPL Cyber Security. جميع الحقوق محفوظة
 const wordsByLang = {
 
 en:[
-    "Cyber Security Researcher",
-    "Ethical Hacker",
-    "Python Developer",
-    "Linux Enthusiast",
-    "Security Researcher"
+    "Securing the Digital Future",
+    "An Early-Stage Cyber Security Startup",
+    "Research. Build. Secure.",
+    "Building Practical Security Solutions",
+    "Growing Through Research & Ethical Hacking"
 ],
 
 ar:[
-    "باحث أمن سيبراني",
-    "مخترق أخلاقي",
-    "مطور بايثون",
-    "عاشق لينكس",
-    "باحث أمني"
+    "نؤمّن مستقبلك الرقمي",
+    "شركة ناشئة في الأمن السيبراني",
+    "نبحث. نبني. نؤمّن.",
+    "نبني حلول أمنية عملية",
+    "ننمو من خلال البحث والاختراق الأخلاقي"
 ]
 
 };
@@ -194,9 +192,9 @@ en:[
 
 `root@rpl:~$ whoami
 
-Saged
+RPL_Cyber_Security
 
-Status : Online ✓`,
+Stage : Early Startup ✓`,
 
 `root@rpl:~$ systemctl status firewall
 
@@ -212,13 +210,13 @@ Ports : 22 80 443
 
 Done.`,
 
-`root@rpl:~$ python scanner.py
+`root@rpl:~$ python automation.py
 
 Initializing...
 
-Scan Completed
+Task Running...
 
-0 Vulnerabilities Found.`,
+Building in progress 🚧`,
 
 `root@rpl:~$ echo "Welcome"
 
@@ -230,9 +228,9 @@ ar:[
 
 `root@rpl:~$ whoami
 
-Saged
+RPL_Cyber_Security
 
-الحالة : متصل ✓`,
+المرحلة : شركة ناشئة ✓`,
 
 `root@rpl:~$ systemctl status firewall
 
@@ -248,13 +246,13 @@ Saged
 
 تم.`,
 
-`root@rpl:~$ python scanner.py
+`root@rpl:~$ python automation.py
 
 جارٍ التهيئة...
 
-اكتمل الفحص
+جارٍ تنفيذ المهمة...
 
-0 ثغرات تم اكتشافها.`,
+قيد البناء 🚧`,
 
 `root@rpl:~$ echo "مرحباً"
 
