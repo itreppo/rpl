@@ -1,794 +1,1909 @@
-/* =====================================
+/* =========================
    RPL CYBER SECURITY V2
-===================================== */
+========================= */
 
-"use strict";
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-/* ==========================
-   Translations
-========================== */
+html{
+    scroll-behavior:smooth;
+}
 
-const translations = {
+/* =========================
+   THEME VARIABLES
+   Dark mode = default (matches the original design 1:1)
+   Light mode = [data-theme="light"] override
+========================= */
 
-en:{
+:root{
 
-nav_home:"Home",
-nav_about:"About",
-nav_services:"Services",
-nav_projects:"Projects",
-nav_contact:"Contact",
+    --bg-body:#030712;
+    --bg-deep:#020617;
+    --bg-card:#0b1220;
+    --bg-card2:#08101d;
 
-loader_text:"Initializing Secure Environment...",
+    --text-main:#ffffff;
+    --text-muted:#94a3b8;
+    --text-secondary:#cbd5e1;
+    --text-tertiary:#e2e8f0;
+    --text-faint:#64748b;
 
-hero_terminal:"root@rpl:~$ system_online",
-hero_desc:"RPL Cyber Security is an early-stage startup building practical cyber security solutions through hands-on research, ethical hacking, and secure software development. We are still growing — and building in the open.",
+    --header-bg:rgba(2,6,23,.85);
 
-btn_explore:"Explore RPL",
-btn_contact:"Contact Us",
+    --accent:#006cff;
+    --accent-text:#00a8ff;
+    --terminal-green:#00ff88;
+    --hero-gradient-end:#ffffff;
 
-about_title:"About RPL",
-about_who_title:"Who Is RPL?",
-about_who_p1:"RPL Cyber Security is an early-stage cyber security startup. We are currently in our building phase, laying the groundwork for the research, tools, and services we plan to offer.",
-about_who_p2:"Our work today is focused on hands-on learning, security research, and developing the practical skills that will shape RPL's future services.",
-about_vision_title:"Our Vision",
-about_vision_p1:"To grow into a trusted cyber security brand that combines continuous research with practical, real-world solutions — helping individuals and businesses stay secure in an evolving digital landscape.",
-about_mission_title:"Our Mission",
-about_mission_p1:"To build a solid foundation of security expertise through ethical hacking practice, security research, and secure software development, and to grow step by step into a team capable of delivering reliable security services.",
+    --shine:rgba(255,255,255,.05);
+    --shine-strong:rgba(255,255,255,.3);
 
-services_title:"Future Services",
-services_subtitle:"RPL is still growing. The services below are planned for future release as our team and expertise expand.",
-service1_title:"Penetration Testing",
-service1_desc:"Ethical hacking engagements to help identify and address security weaknesses before attackers do.",
-service2_title:"Security Consulting",
-service2_desc:"Guidance and best practices to help teams build and maintain a more secure digital environment.",
-service3_title:"Vulnerability Assessment",
-service3_desc:"Structured scanning and risk assessment for systems and infrastructure.",
-service4_title:"Secure Web Development",
-service4_desc:"Building websites and web applications with security best practices in mind from the start.",
-service5_title:"Linux Hardening",
-service5_desc:"Configuring and hardening Linux servers to reduce attack surface.",
-service6_title:"Security Automation",
-service6_desc:"Custom scripts and tools to automate repetitive security tasks.",
-service7_title:"Incident Response",
-service7_desc:"Rapid response support to help contain, investigate, and recover from security incidents.",
-service8_title:"Cloud Security",
-service8_desc:"Securing cloud environments and configurations against common misconfigurations and threats.",
-
-projects_title:"Our Projects",
-projects_subtitle:"Our projects are currently under development. More details will be shared as they take shape.",
-status_dev:"In Development",
-project1_title:"RPL Recon Toolkit",
-project1_desc:"An internal toolkit for reconnaissance and OSINT gathering during security research.",
-project2_title:"RPL Vulnerability Scanner",
-project2_desc:"A Python-based scanner concept for identifying common security misconfigurations.",
-project3_title:"RPL Automation Scripts",
-project3_desc:"A growing collection of scripts to automate routine security research tasks.",
-
-contact_title:"Contact RPL",
-contact_subtitle:"Have a question or want to follow our progress? Reach out to us through any of the channels below.",
-contact_email_title:"Email",
-btn_send_email:"Send Email",
-contact_discord_title:"Discord",
-contact_discord_desc:"Join Our Community",
-btn_join_server:"Join Server",
-contact_whatsapp_title:"WhatsApp",
-contact_whatsapp_desc:"Contact Directly",
-btn_chat_now:"Chat Now",
-contact_instagram_title:"Instagram",
-contact_instagram_desc:"Follow Us",
-btn_follow_now:"Follow",
-
-footer_desc:"Building the future of secure digital solutions.",
-footer_home:"Home",
-footer_contact:"Contact",
-footer_rights:"All Rights Reserved."
-
-},
-
-ar:{
-
-nav_home:"الرئيسية",
-nav_about:"من نحن",
-nav_services:"الخدمات",
-nav_projects:"المشاريع",
-nav_contact:"تواصل",
-
-loader_text:"جاري تهيئة البيئة الآمنة...",
-
-hero_terminal:"root@rpl:~$ النظام_شغال",
-hero_desc:"إحنا RPL Cyber Security، شركة ناشئة لسه في أول خطواتها، وبنبني حلول أمن سيبراني عملية من خلال بحث تطبيقي واختراق أخلاقي وتطوير برمجيات آمنة. لسه في مرحلة البناء، وبنشارككم كل خطوة أول بأول.",
-
-btn_explore:"استكشف RPL",
-btn_contact:"كلمنا",
-
-about_title:"مين احنا",
-about_who_title:"مين RPL؟",
-about_who_p1:"RPL Cyber Security شركة ناشئة في مجال الأمن السيبراني، دلوقتي بنبني الأساس بتاعنا، يعني بنركز على البحث والأدوات والخدمات اللي هنقدمها في المستقبل.",
-about_who_p2:"شغلنا حاليًا متركز على التعلم العملي والبحث الأمني، وبنطور المهارات اللي هتشكّل خدمات RPL في المستقبل.",
-about_vision_title:"رؤيتنا",
-about_vision_p1:"حلمنا إننا نبقى اسم موثوق في عالم الأمن السيبراني، ندمج فيه البحث المستمر مع حلول عملية وواقعية تساعد الأفراد والشركات يفضلوا آمنين في عالم رقمي بيتغير كل يوم.",
-about_mission_title:"مهمتنا",
-about_mission_p1:"بنبني نفسنا خطوة خطوة، من خلال الاختراق الأخلاقي والبحث الأمني وتطوير برمجيات آمنة، لحد ما نوصل لفريق قادر يقدّم خدمات أمنية تقدر تعتمد عليها.",
-
-services_title:"خدماتنا الجاية",
-services_subtitle:"RPL لسه في أول الطريق، والخدمات دي هنطرحها بعدين مع ما فريقنا وخبرتنا يكبروا.",
-service1_title:"اختبار الاختراق",
-service1_desc:"عمليات اختراق أخلاقي بتساعد نكتشف نقاط الضعف الأمنية ونعالجها قبل ما حد يستغلها.",
-service2_title:"استشارات أمنية",
-service2_desc:"إرشادات وأفضل الممارسات بتساعد الفرق يبنوا ويحافظوا على بيئة رقمية أكتر أمانًا.",
-service3_title:"تقييم الثغرات",
-service3_desc:"فحص منظم وتقييم مخاطر للأنظمة والبنية التحتية.",
-service4_title:"تطوير مواقع آمنة",
-service4_desc:"بناء مواقع وتطبيقات ويب مع مراعاة أفضل ممارسات الأمان من أول خطوة.",
-service5_title:"تحصين سيرفرات لينكس",
-service5_desc:"إعداد وتحصين سيرفرات لينكس عشان نقلل نقاط الاختراق المحتملة.",
-service6_title:"أتمتة العمليات الأمنية",
-service6_desc:"سكربتات وأدوات مخصصة لأتمتة المهام الأمنية المتكررة.",
-service7_title:"الاستجابة للحوادث الأمنية",
-service7_desc:"دعم سريع يساعدنا نحتوي الحادث الأمني ونحقق فيه ونرجع الأمور لطبيعتها.",
-service8_title:"أمن السحابة",
-service8_desc:"تأمين بيئات وإعدادات الكلاود من الأخطاء الشائعة والتهديدات.",
-
-projects_title:"مشاريعنا",
-projects_subtitle:"مشاريعنا لسه تحت التطوير، وهنشارككم التفاصيل أول ما تخلص.",
-status_dev:"قيد التطوير",
-project1_title:"RPL Recon Toolkit",
-project1_desc:"أداة داخلية بنجمع بيها معلومات استطلاعية وOSINT وقت البحث الأمني.",
-project2_title:"RPL Vulnerability Scanner",
-project2_desc:"فكرة أداة فحص ببايثون بتكتشف الأخطاء الأمنية الشائعة في الإعدادات.",
-project3_title:"RPL Automation Scripts",
-project3_desc:"مجموعة سكربتات بتكبر يوم بعد يوم، بتساعدنا نؤتمت مهام البحث الأمني الروتينية.",
-
-contact_title:"تواصل معانا",
-contact_subtitle:"عندك سؤال أو حابب تتابعنا؟ كلمنا من أي قناة من دول.",
-contact_email_title:"البريد الإلكتروني",
-btn_send_email:"إرسال بريد",
-contact_discord_title:"ديسكورد",
-contact_discord_desc:"انضم لمجتمعنا",
-btn_join_server:"انضم للسيرفر",
-contact_whatsapp_title:"واتساب",
-contact_whatsapp_desc:"تواصل مباشرة",
-btn_chat_now:"ابدأ المحادثة",
-contact_instagram_title:"إنستجرام",
-contact_instagram_desc:"تابعنا",
-btn_follow_now:"متابعة",
-
-footer_desc:"بنبني مستقبل الحلول الرقمية الآمنة.",
-footer_home:"الرئيسية",
-footer_contact:"تواصل",
-footer_rights:"جميع الحقوق محفوظة."
+    --glow-opacity:.18;
+    --card-border-alpha:.25;
 
 }
 
-};
+body{
 
-/* Words for the hero typing effect, per language */
+    background:var(--bg-body);
+    color:var(--text-main);
 
-const wordsByLang = {
+    font-family:'Inter',sans-serif;
 
-en:[
-    "Securing the Digital Future",
-    "An Early-Stage Cyber Security Startup",
-    "Research. Build. Secure.",
-    "Building Practical Security Solutions",
-    "Growing Through Research & Ethical Hacking"
-],
+    overflow-x:hidden;
 
-ar:[
-    "نؤمّن مستقبلك الرقمي",
-    "شركة ناشئة في الأمن السيبراني",
-    "نبحث. نبني. نؤمّن.",
-    "نبني حلول أمنية عملية",
-    "ننمو من خلال البحث والاختراق الأخلاقي"
-]
-
-};
-
-/* Live terminal lines, per language */
-
-const terminalLinesByLang = {
-
-en:[
-
-`root@rpl:~$ whoami
-
-RPL_Cyber_Security
-
-Stage : Early Startup ✓`,
-
-`root@rpl:~$ systemctl status firewall
-
-Firewall : Active
-
-Threats : 0`,
-
-`root@rpl:~$ nmap localhost
-
-Scanning...
-
-Ports : 22 80 443
-
-Done.`,
-
-`root@rpl:~$ python automation.py
-
-Initializing...
-
-Task Running...
-
-Building in progress 🚧`,
-
-`root@rpl:~$ echo "Welcome"
-
-Welcome to RPL Cyber Security`
-
-],
-
-ar:[
-
-`root@rpl:~$ whoami
-
-RPL_Cyber_Security
-
-المرحلة : شركة ناشئة ✓`,
-
-`root@rpl:~$ systemctl status firewall
-
-الجدار الناري : نشط
-
-التهديدات : 0`,
-
-`root@rpl:~$ nmap localhost
-
-جارٍ الفحص...
-
-المنافذ : 22 80 443
-
-تم.`,
-
-`root@rpl:~$ python automation.py
-
-جارٍ التهيئة...
-
-جارٍ تنفيذ المهمة...
-
-قيد البناء 🚧`,
-
-`root@rpl:~$ echo "مرحباً"
-
-مرحباً بكم في RPL للأمن السيبراني`
-
-]
-
-};
-
-/* ==========================
-   Language State
-========================== */
-
-const langBtn = document.getElementById("langBtn");
-
-let currentLang = localStorage.getItem("language") || "en";
-
-/* These get (re)initialized once the typing + terminal
-   sections below are set up, but applyLanguage needs to be
-   able to reset them, so declare the hooks here. */
-
-let resetTyping = () => {};
-let resetTerminal = () => {};
-
-function applyLanguage(lang){
-
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-
-    document.querySelectorAll("[data-lang]").forEach(el => {
-
-        const key = el.dataset.lang;
-
-        if(translations[lang][key]){
-            el.textContent = translations[lang][key];
-        }
-
-    });
-
-    localStorage.setItem("language", lang);
-
-    resetTyping();
-    resetTerminal();
+    transition:background-color .4s ease, color .4s ease;
 
 }
 
-langBtn.innerHTML = '<i class="fa-solid fa-language"></i>';
+/* Scrollbar */
 
-langBtn.onclick = () => {
+::-webkit-scrollbar{
 
-    currentLang = currentLang === "en" ? "ar" : "en";
-
-    applyLanguage(currentLang);
-
-};
-
-/* ==========================
-   Loader
-========================== */
-
-window.addEventListener("load", () => {
-
-    const loader = document.querySelector(".loader");
-
-    setTimeout(() => {
-
-        loader.classList.add("hide");
-
-    }, 1800);
-
-});
-
-
-/* ==========================
-   Typing Effect
-========================== */
-
-const typingElement = document.getElementById("typing");
-
-let wordIndex = 0;
-
-let charIndex = 0;
-
-let deleting = false;
-
-function typingEffect() {
-
-    const current = wordsByLang[currentLang][wordIndex];
-
-    if (!deleting) {
-
-        typingElement.textContent = current.substring(0, charIndex++);
-
-        if (charIndex > current.length) {
-
-            deleting = true;
-
-            setTimeout(typingEffect, 1500);
-
-            return;
-
-        }
-
-    } else {
-
-        typingElement.textContent = current.substring(0, charIndex--);
-
-        if (charIndex < 0) {
-
-            deleting = false;
-
-            wordIndex++;
-
-            if (wordIndex >= wordsByLang[currentLang].length)
-
-                wordIndex = 0;
-
-        }
-
-    }
-
-    setTimeout(typingEffect, deleting ? 50 : 90);
+    width:8px;
 
 }
 
-resetTyping = () => {
+::-webkit-scrollbar-track{
 
-    wordIndex = 0;
-    charIndex = 0;
-    deleting = false;
-
-    if(typingElement){
-        typingElement.textContent = "";
-    }
-
-};
-
-typingEffect();
-
-/* ==========================
-   Fade Animation
-========================== */
-
-const animatedItems = document.querySelectorAll(
-
-    ".about-card,.skill-card,.service-card,.contact-card"
-
-);
-
-animatedItems.forEach(item=>{
-
-    item.classList.add("fade-up");
-
-});
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-},{
-    threshold:.2
-});
-
-animatedItems.forEach(item=>{
-
-    observer.observe(item);
-
-});
-
-/* ==========================
-   Back To Top Button
-========================== */
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 400) {
-
-        topBtn.classList.add("show");
-
-    } else {
-
-        topBtn.classList.remove("show");
-
-    }
-
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-
-/* ==========================
-   Active Navigation
-========================== */
-
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 120;
-
-        const sectionHeight = section.clientHeight;
-
-        if (scrollY >= sectionTop) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-/* ==========================
-   Smooth Scroll
-========================== */
-
-navLinks.forEach(link => {
-
-    link.addEventListener("click", function(e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        target.scrollIntoView({
-
-            behavior: "smooth"
-
-        });
-
-    });
-
-});
-
-/* ==========================
-   Live Terminal
-========================== */
-
-const terminal = document.getElementById("terminal");
-
-let terminalIndex = 0;
-
-function updateTerminal(){
-
-    terminal.style.opacity = "0";
-
-    setTimeout(()=>{
-
-        terminal.textContent = terminalLinesByLang[currentLang][terminalIndex];
-
-        terminal.style.opacity = "1";
-
-        terminalIndex++;
-
-        if(terminalIndex >= terminalLinesByLang[currentLang].length){
-
-            terminalIndex = 0;
-
-        }
-
-    },300);
+    background:var(--bg-deep);
 
 }
 
-resetTerminal = () => {
+::-webkit-scrollbar-thumb{
 
-    terminalIndex = 0;
+    background:var(--accent);
+    border-radius:20px;
 
-    if(terminal){
-        terminal.style.opacity = "1";
-        terminal.textContent = terminalLinesByLang[currentLang][0];
-    }
+}
 
-};
+::-webkit-scrollbar-thumb:hover{
 
-setInterval(updateTerminal,4000);
+    background:#0095ff;
 
+}
 
-/* ==========================
-   Terminal Cursor
-========================== */
+/* Background Glow */
 
-setInterval(()=>{
+body::before{
 
-    if(!terminal.textContent.endsWith("█")){
+    content:"";
 
-        terminal.textContent += " █";
+    position:fixed;
 
-    }else{
+    width:650px;
+    height:650px;
 
-        terminal.textContent = terminal.textContent.slice(0,-2);
+    border-radius:50%;
 
-    }
+    background:var(--accent);
 
-},600);
+    filter:blur(220px);
 
-/* ==========================
-   Mouse Glow Effect
-========================== */
+    opacity:var(--glow-opacity);
 
-const glow = document.createElement("div");
+    left:50%;
+    top:-320px;
 
-glow.id = "mouseGlow";
+    transform:translateX(-50%);
 
-document.body.appendChild(glow);
+    z-index:-2;
 
-document.addEventListener("mousemove", (e) => {
+}
 
-    glow.style.left = e.clientX + "px";
+/* Loader */
 
-    glow.style.top = e.clientY + "px";
+.loader{
 
-});
+    position:fixed;
 
+    inset:0;
 
-/* ==========================
-   Card Tilt Effect
-========================== */
+    background:var(--bg-deep);
 
-const cards = document.querySelectorAll(
+    display:flex;
 
-".skill-card,.service-card,.contact-card,.about-card"
+    justify-content:center;
+    align-items:center;
 
-);
+    flex-direction:column;
 
-cards.forEach(card=>{
+    z-index:99999;
 
-    card.addEventListener("mousemove",(e)=>{
+    animation:loaderHide 2.5s forwards;
 
-        const rect = card.getBoundingClientRect();
+}
 
-        const x = e.clientX - rect.left;
+.loader img{
 
-        const y = e.clientY - rect.top;
+    width:130px;
 
-        const rotateY = (x / rect.width - 0.5) * 12;
+    filter:drop-shadow(0 0 30px #008cff);
 
-        const rotateX = (0.5 - y / rect.height) * 12;
+    animation:logoFloat 2s infinite;
 
-        card.style.transform =
+}
 
-        `perspective(900px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        translateY(-8px)`;
+.loader h2{
 
-    });
+    margin:20px 0;
 
-    card.addEventListener("mouseleave",()=>{
+    color:var(--accent-text);
 
-        card.style.transform =
-        "perspective(900px) rotateX(0) rotateY(0)";
+    font-family:'Orbitron',sans-serif;
 
-    });
+}
 
-});
+.loader p{
 
+    color:var(--text-muted);
 
-/* ==========================
-   Navbar Shadow
-========================== */
+}
 
-const header = document.querySelector("header");
+@keyframes logoFloat{
 
-window.addEventListener("scroll",()=>{
+    0%,100%{
 
-    if(window.scrollY > 80){
-
-        header.style.boxShadow =
-        "0 10px 30px rgba(0,0,0,.35)";
-
-    }else{
-
-        header.style.boxShadow = "none";
+        transform:translateY(0);
 
     }
 
-});
+    50%{
 
+        transform:translateY(-10px);
 
-/* ==========================
-   Current Year
-========================== */
+    }
 
-const year = document.getElementById("year");
+}
 
-if(year){
+@keyframes loaderHide{
 
-    year.textContent = new Date().getFullYear();
+    0%,80%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+        visibility:hidden;
+
+    }
+
+} 
+
+/* =========================
+        HEADER
+========================= */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    width:100%;
+
+    padding:20px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:var(--header-bg);
+
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid rgba(0,108,255,.35);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo img{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:contain;
+
+    filter:drop-shadow(0 0 15px #008cff);
+
+}
+
+.logo h2{
+
+    font-family:'Orbitron',sans-serif;
+
+    color:var(--accent-text);
+
+    font-size:28px;
+
+}
+
+.logo p{
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+}
+
+/* Navigation */
+
+nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+nav a{
+
+    color:var(--text-main);
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:500;
+
+    position:relative;
+
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--accent-text);
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--accent-text);
+
+}
+
+nav a:hover::after{
+
+    width:100%;
+
+}
+
+/* =========================
+        HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:60px;
+
+    padding:80px 10%;
+
+}
+
+.hero-left{
+
+    animation:fadeLeft 1s;
+
+}
+
+.hero-left .terminal{
+
+    color:var(--terminal-green);
+
+    font-family:monospace;
+
+    margin-bottom:15px;
+
+}
+
+.hero-left h1{
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:95px;
+
+    background:linear-gradient(90deg,#008cff,var(--hero-gradient-end));
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    margin-bottom:15px;
+
+}
+
+.hero-left h2{
+
+    color:var(--accent-text);
+
+    margin-bottom:25px;
+
+    min-height:40px;
+
+}
+
+.hero-left p{
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+.btn{
+
+    padding:15px 35px;
+
+    border-radius:12px;
+
+    background:var(--accent);
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 0 25px #006cff;
+
+}
+
+.outline{
+
+    background:transparent;
+
+    border:2px solid var(--accent);
+
+}
+
+.outline:hover{
+
+    background:var(--accent);
+
+}
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.terminal-box{
+
+    width:100%;
+
+    max-width:520px;
+
+    background:var(--bg-deep);
+
+    border:1px solid rgba(0,108,255,.45);
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 0 40px rgba(0,108,255,.25);
+
+}
+
+.terminal-box pre{
+
+    color:var(--terminal-green);
+
+    font-family:Consolas,monospace;
+
+    line-height:2;
+
+    white-space:pre-wrap;
+
+}
+
+/* Animations */
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* =========================
+      SECTION TITLE
+========================= */
+
+section{
+
+    padding:100px 10%;
+
+}
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:60px;
+
+}
+
+.section-title h2{
+
+    font-size:42px;
+
+    color:var(--text-main);
+
+    font-family:'Orbitron',sans-serif;
+
+}
+
+/* =========================
+      SECTION SUBTITLE
+========================= */
+
+.section-subtitle{
+
+    color:var(--text-muted);
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    max-width:720px;
+
+    margin-top:-40px;
+
+    margin-bottom:50px;
+
+}
+
+/* =========================
+        ABOUT
+========================= */
+
+.about-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+
+.about-card{
+
+    background:var(--bg-card);
+
+    border:1px solid rgba(0,108,255,var(--card-border-alpha));
+
+    border-radius:18px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.about-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#008cff;
+
+    box-shadow:0 0 25px rgba(0,140,255,.25);
+
+}
+
+.about-card h3{
+
+    color:var(--accent-text);
+
+    margin-bottom:20px;
+
+    font-size:24px;
+
+}
+
+.about-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.9;
+
+    margin-bottom:18px;
+
+}
+
+.about-card ul{
+
+    list-style:none;
+
+}
+
+.about-card li{
+
+    margin:15px 0;
+
+    color:var(--text-tertiary);
+
+}
+
+/* =========================
+        SKILLS
+========================= */
+
+.skills-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+.skill-card{
+
+    background:var(--bg-card);
+
+    border:1px solid rgba(0,108,255,var(--card-border-alpha));
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.skill-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#00a8ff;
+
+    box-shadow:0 0 30px rgba(0,140,255,.25);
+
+}
+
+.skill-card .icon{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.skill-card h3{
+
+    color:var(--accent-text);
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.skill-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* =========================
+        SERVICES
+========================= */
+
+.services-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+.service-card{
+
+    position:relative;
+
+    background:var(--bg-card);
+
+    border:1px solid rgba(0,108,255,var(--card-border-alpha));
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.coming-soon{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    padding:5px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+    color:var(--accent-text);
+
+    background:rgba(0,108,255,.12);
+
+    border:1px solid rgba(0,108,255,.4);
+
+}
+
+.coming-soon.status-dev{
+
+    color:var(--terminal-green);
+
+    background:rgba(0,255,136,.08);
+
+    border-color:rgba(0,255,136,.35);
+
+}
+
+.service-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#00a8ff;
+
+    box-shadow:0 0 30px rgba(0,140,255,.25);
+
+}
+
+.service-card .icon{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.service-card h3{
+
+    color:var(--accent-text);
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.service-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+/* =========================
+        ROADMAP
+========================= */
+
+.roadmap-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+.roadmap-card{
+
+    position:relative;
+
+    background:var(--bg-card);
+
+    border:1px solid rgba(0,108,255,var(--card-border-alpha));
+
+    border-left:3px solid var(--accent);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.roadmap-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#00a8ff;
+
+    box-shadow:0 0 25px rgba(0,140,255,.2);
+
+}
+
+.roadmap-card h3{
+
+    color:var(--accent-text);
+
+    margin:16px 0 12px;
+
+    font-size:22px;
+
+}
+
+.roadmap-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+}
+
+.roadmap-status{
+
+    display:inline-block;
+
+    padding:5px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+}
+
+.status-progress{
+
+    color:var(--terminal-green);
+
+    background:rgba(0,255,136,.08);
+
+    border:1px solid rgba(0,255,136,.35);
+
+}
+
+.status-planned{
+
+    color:var(--text-muted);
+
+    background:rgba(148,163,184,.1);
+
+    border:1px solid rgba(148,163,184,.3);
+
+}
+
+/* =========================
+        CONTACT
+========================= */
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+.contact-card{
+
+    background:var(--bg-card);
+
+    border:1px solid rgba(0,108,255,var(--card-border-alpha));
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.contact-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:#00a8ff;
+
+    box-shadow:0 0 30px rgba(0,140,255,.25);
+
+}
+
+.contact-icon{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+}
+
+.contact-icon i,
+.skill-card .icon i,
+.service-card .icon i{
+
+    font-size:inherit;
+
+}
+
+/* Brand colors for contact icons */
+
+.icon-email{ color:var(--accent-text); }
+.icon-discord{ color:#5865F2; }
+.icon-whatsapp{ color:#25D366; }
+.icon-instagram{ color:#E1306C; }
+
+.contact-card:hover .contact-icon{
+
+    transform:scale(1.12) translateY(-4px);
+
+}
+
+/* Brand colors for expertise/services icons */
+
+.icon-linux{ color:var(--text-tertiary); }
+.icon-python{ color:#3776AB; }
+
+.contact-card h3{
+
+    color:var(--accent-text);
+
+    margin-bottom:15px;
+
+    font-size:24px;
+
+}
+
+.contact-card p{
+
+    color:var(--text-secondary);
+
+    margin-bottom:25px;
+
+    line-height:1.8;
+
+}
+
+.contact-card a{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:var(--accent);
+
+    color:#fff;
+
+    padding:12px 28px;
+
+    border-radius:10px;
+
+    transition:.3s;
+
+    font-weight:600;
+
+}
+
+.contact-card a:hover{
+
+    background:#008cff;
+
+    transform:translateY(-3px);
+
+}
+
+/* =========================
+        TOP BUTTON
+========================= */
+
+#topBtn{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    color:#fff;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    display:none;
+
+    transition:.3s;
+
+    box-shadow:0 0 20px rgba(0,108,255,.45);
+
+    z-index:999;
+
+}
+
+#topBtn:hover{
+
+    transform:translateY(-6px);
+
+    background:#008cff;
+
+}
+
+/* =========================
+          FOOTER
+========================= */
+
+footer{
+
+    margin-top:100px;
+
+    padding:50px 10%;
+
+    text-align:center;
+
+    border-top:1px solid rgba(0,108,255,.2);
+
+    background:var(--bg-deep);
+
+}
+
+.footer-logo{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-logo img{
+
+    width:65px;
+
+    filter:drop-shadow(0 0 12px #008cff);
+
+}
+
+.footer-logo h2{
+
+    font-family:'Orbitron',sans-serif;
+
+    color:var(--accent-text);
+
+}
+
+footer p{
+
+    color:var(--text-muted);
+
+    margin:12px 0;
+
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin:30px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.footer-links a{
+
+    text-decoration:none;
+
+    color:var(--text-secondary);
+
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:var(--accent-text);
+
+}
+
+.copyright{
+
+    margin-top:25px;
+
+    font-size:14px;
+
+    color:var(--text-faint);
+
+}
+
+/* =========================
+      RESPONSIVE DESIGN
+========================= */
+
+@media (max-width:1100px){
+
+.hero{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:60px;
+
+}
+
+.hero-left{
+
+    order:2;
+
+}
+
+.hero-right{
+
+    order:1;
+
+}
+
+.hero-buttons{
+
+    justify-content:center;
+
+}
+
+.hero-left h1{
+
+    font-size:70px;
+
+}
+
+header{
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+nav{
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+}
+
+@media (max-width:768px){
+
+section{
+
+    padding:80px 7%;
+
+}
+
+.logo{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.logo img{
+
+    width:60px;
+
+}
+
+.logo h2{
+
+    font-size:24px;
+
+}
+
+nav{
+
+    gap:15px;
+
+}
+
+nav a{
+
+    font-size:15px;
+
+}
+
+.hero{
+
+    padding-top:150px;
+
+}
+
+.hero-left h1{
+
+    font-size:55px;
+
+}
+
+.hero-left h2{
+
+    font-size:24px;
+
+}
+
+.hero-left p{
+
+    font-size:16px;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.btn{
+
+    width:220px;
+
+    text-align:center;
+
+}
+
+.section-title{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.section-title h2{
+
+    font-size:34px;
+
+}
+
+.about-container,
+
+.skills-grid,
+
+.services-grid,
+
+.roadmap-grid,
+
+.contact-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.coming-soon{
+
+    position:static;
+
+    display:inline-block;
+
+    margin-bottom:15px;
+
+}
+
+.terminal-box{
+
+    padding:20px;
+
+}
+
+.terminal-box pre{
+
+    font-size:14px;
+
+}
+
+}
+
+@media (max-width:480px){
+
+body{
+
+    font-size:15px;
+
+}
+
+.hero-left h1{
+
+    font-size:42px;
+
+}
+
+.hero-left h2{
+
+    font-size:20px;
+
+}
+
+.hero-left p{
+
+    font-size:15px;
+
+}
+
+.logo img{
+
+    width:50px;
+
+}
+
+.logo h2{
+
+    font-size:20px;
+
+}
+
+nav{
+
+    gap:10px;
+
+}
+
+nav a{
+
+    font-size:14px;
+
+}
+
+.skill-card,
+
+.service-card,
+
+.contact-card{
+
+    padding:25px;
+
+}
+
+.footer-links{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+#topBtn{
+
+    width:45px;
+
+    height:45px;
+
+    right:20px;
+
+    bottom:20px;
+
+}
+
+}
+
+/* =========================
+      SCROLL ANIMATIONS
+========================= */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:all .8s ease;
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.fade-left{
+
+    opacity:0;
+
+    transform:translateX(-60px);
+
+    transition:all .8s ease;
+
+}
+
+.fade-left.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+.fade-right{
+
+    opacity:0;
+
+    transform:translateX(60px);
+
+    transition:all .8s ease;
+
+}
+
+.fade-right.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/* =========================
+      HOVER EFFECTS
+========================= */
+
+.skill-card,
+.service-card,
+.contact-card,
+.about-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.skill-card::before,
+.service-card::before,
+.contact-card::before,
+.about-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        var(--shine),
+        transparent
+    );
+
+    transition:.8s;
+
+}
+
+.skill-card:hover::before,
+.service-card:hover::before,
+.contact-card:hover::before,
+.about-card:hover::before{
+
+    left:100%;
+
+}
+
+/* =========================
+        GLOW
+========================= */
+
+.hero h1{
+
+    text-shadow:
+    0 0 10px #008cff,
+    0 0 20px #008cff,
+    0 0 40px rgba(0,140,255,.35);
+
+}
+
+.logo img:hover{
+
+    transform:rotate(6deg) scale(1.05);
+
+    transition:.4s;
+
+}
+
+/* =========================
+      BUTTON EFFECT
+========================= */
+
+.btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:120%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--shine-strong),
+        transparent
+    );
+
+    transition:.6s;
+
+}
+
+.btn:hover::after{
+
+    left:120%;
+
+}
+
+/* =========================
+      TERMINAL
+========================= */
+
+.terminal-box{
+
+    animation:terminalFloat 4s ease-in-out infinite;
+
+}
+
+@keyframes terminalFloat{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* =========================
+      SELECTION
+========================= */
+
+::selection{
+
+    background:#008cff;
+
+    color:white;
+
+}
+
+/* =========================
+      FINAL EFFECTS
+========================= */
+
+/* Smooth image animation */
+
+img{
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    transition:.35s;
+
+}
+
+/* Links */
+
+a{
+
+    transition:.3s;
+
+}
+
+/* Better focus */
+
+button,
+a{
+
+    outline:none;
+
+}
+
+/* Small glow */
+
+.skill-card:hover,
+.service-card:hover,
+.contact-card:hover,
+.about-card:hover{
+
+    box-shadow:
+    0 0 15px rgba(0,108,255,.20),
+    0 0 35px rgba(0,108,255,.18);
+
+}
+
+/* Glass */
+
+header{
+
+    backdrop-filter:blur(18px);
+
+}
+
+/* Sections */
+
+section{
+
+    position:relative;
+
+}
+
+/* Blue line */
+
+.section-title::after{
+
+    content:"";
+
+    width:80px;
+
+    height:3px;
+
+    background:#008cff;
+
+    margin-left:15px;
+
+    border-radius:50px;
+
+}
+
+/* Footer */
+
+footer{
+
+    overflow:hidden;
+
+}
+
+/* Loader Fade */
+
+.loader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:1s;
+
+}
+
+/* Top Button */
+
+#topBtn.show{
+
+    display:block;
+
+    animation:topFade .4s;
+
+}
+
+@keyframes topFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Floating */
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.skill-card:nth-child(3){
+
+    animation:floatCard 6s infinite;
+
+}
+
+/* Performance */
+
+html{
+
+    scroll-padding-top:90px;
+
+}
+
+body{
+
+    text-rendering:optimizeLegibility;
 
 }
 
 /* ==========================
-   Safe Element Check
+      LANGUAGE BUTTON
 ========================== */
 
-function $(selector) {
-    return document.querySelector(selector);
+#langBtn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:42px;
+
+    height:42px;
+
+    padding:0;
+
+    background:var(--accent);
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    transition:.3s;
+
 }
 
-function $$(selector) {
-    return document.querySelectorAll(selector);
+#langBtn:hover{
+
+    background:#008cff;
+
+    transform:translateY(-2px);
+
+}
+
+html[dir="rtl"]{
+
+    direction:rtl;
+
+}
+
+html[dir="rtl"] nav{
+
+    flex-direction:row-reverse;
+
+}
+
+html[dir="rtl"] .hero{
+
+    direction:rtl;
+
+}
+
+html[dir="rtl"] .hero-buttons{
+
+    justify-content:flex-end;
+
 }
 
 /* ==========================
-   Page Loaded Animation
+      ACTIVE NAV LINK
 ========================== */
 
-window.addEventListener("load", () => {
+nav a.active{
 
-    document.body.classList.add("loaded");
+    color:var(--accent-text);
 
-});
+}
 
-/* ==========================
-   Prevent Double Click
-========================== */
+nav a.active::after{
 
-document.querySelectorAll("a").forEach(link => {
+    width:100%;
 
-    link.addEventListener("dragstart", e => {
-
-        e.preventDefault();
-
-    });
-
-});
-
-/* ==========================
-   Keyboard Shortcuts
-========================== */
-
-document.addEventListener("keydown", (e) => {
-
-    // Ctrl + Home
-    if (e.ctrlKey && e.key === "Home") {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    }
-
-});
-
-/* ==========================
-   Performance
-========================== */
-
-window.addEventListener("resize", () => {
-
-    document.body.style.overflowX = "hidden";
-
-});
-
-/* ==========================
-   Console Message
-========================== */
-
-console.clear();
-
-console.log(
-
-"%cRPL Cyber Security",
-
-"color:#00a8ff;font-size:22px;font-weight:bold;"
-
-);
-
-console.log(
-
-"%cWelcome Developer 👋",
-
-"color:#00ff88;font-size:14px;"
-
-);
-
-console.log(
-
-"%chttps://itreppo.github.io/rpl/",
-
-"color:white;font-size:13px;"
-
-);
-
-/* ==========================
-   Initial Language Apply
-========================== */
-
-applyLanguage(currentLang);
-
-/* ==========================
-   End
-========================== */
-
-console.log("Website Loaded Successfully.");
+}
