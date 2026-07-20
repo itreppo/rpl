@@ -774,6 +774,60 @@ System : Secure ✓
 
 </footer>
 
+<!-- ================= CHATBOT ================= -->
+
+<div class="chatbot">
+
+    <button id="chatbotToggle" class="chatbot-toggle" aria-label="Chat with RPL" title="Chat with RPL">
+
+        <i class="fa-solid fa-comment-dots" id="chatbotToggleIcon"></i>
+
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+
+        <div class="chatbot-header">
+
+            <div class="chatbot-header-title">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span data-lang="chatbot_title">RPL Assistant</span>
+
+            </div>
+
+            <button id="chatbotClose" aria-label="Close chat" title="Close chat">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+
+        <div class="chatbot-suggestions" id="chatbotSuggestions"></div>
+
+        <form class="chatbot-input-row" id="chatbotForm">
+
+            <input type="text"
+                   id="chatbotInput"
+                   data-lang-placeholder="chatbot_placeholder"
+                   placeholder="Ask a question..."
+                   autocomplete="off">
+
+            <button type="submit" aria-label="Send">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
 <!-- ================= JAVASCRIPT ================= -->
 
 <script src="script.js"></script>
