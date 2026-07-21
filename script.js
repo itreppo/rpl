@@ -81,22 +81,7 @@ btn_follow_now:"Follow",
 footer_desc:"Building the future of secure digital solutions.",
 footer_home:"Home",
 footer_contact:"Contact",
-footer_rights:"All Rights Reserved.",
-
-chatbot_title:"RPL Assistant",
-chatbot_placeholder:"Ask a question...",
-chatbot_greeting:"Hey! 👋 I'm the RPL assistant. Ask me about our services, projects, or how to get in touch.",
-chatbot_fallback:"I can only help with information about RPL's website — try asking about our services, projects, or how to contact us.",
-chatbot_intent_greeting:"Hey there! 👋 Welcome — ask me anything about RPL Cyber Security.",
-chatbot_intent_thanks:"You're welcome! 😊 Let me know if you need anything else.",
-chatbot_topic_services:"Our services",
-chatbot_topic_projects:"Our projects",
-chatbot_topic_about:"Who is RPL?",
-chatbot_topic_contact:"How to contact you",
-chatbot_answer_services:"We're planning Penetration Testing, Security Consulting, Vulnerability Assessment, Secure Web Development, Linux Hardening, Security Automation, Incident Response, and Cloud Security. These are upcoming services as RPL grows — check the Services section for details.",
-chatbot_answer_projects:"We're currently building the RPL Recon Toolkit, RPL Vulnerability Scanner, and RPL Automation Scripts — all still in development. Check out the Projects section for more.",
-chatbot_answer_about:"RPL Cyber Security is an early-stage startup building the foundation for our future research, tools, and services. Right now we're focused on hands-on learning and security research.",
-chatbot_answer_contact:"You can reach us by Email, Discord, WhatsApp, or Instagram — scroll down to the Contact section for direct links."
+footer_rights:"All Rights Reserved."
 
 },
 
@@ -171,22 +156,7 @@ btn_follow_now:"متابعة",
 footer_desc:"بنبني مستقبل الحلول الرقمية الآمنة.",
 footer_home:"الرئيسية",
 footer_contact:"تواصل",
-footer_rights:"جميع الحقوق محفوظة.",
-
-chatbot_title:"مساعد RPL",
-chatbot_placeholder:"اسأل سؤال...",
-chatbot_greeting:"هاي! 👋 أنا مساعد RPL. اسألني عن خدماتنا أو مشاريعنا أو إزاي تتواصل معانا.",
-chatbot_fallback:"أنا بس بقدر أساعدك بمعلومات جوه موقع RPL Cyber Security — جرب تسألني عن خدماتنا، مشاريعنا، أو إزاي تتواصل معانا.",
-chatbot_intent_greeting:"وعليكم السلام ورحمة الله! 👋 أهلاً بيك، اسألني عن أي حاجة في موقع RPL Cyber Security.",
-chatbot_intent_thanks:"العفو! 😊 لو محتاج أي حاجة تانية أنا موجود.",
-chatbot_topic_services:"خدماتنا",
-chatbot_topic_projects:"مشاريعنا",
-chatbot_topic_about:"مين RPL؟",
-chatbot_topic_contact:"إزاي أتواصل معاكم",
-chatbot_answer_services:"احنا دلوقتي بنجهز خدمات زي اختبار الاختراق، استشارات أمنية، تقييم الثغرات، تطوير مواقع آمنة، تحصين سيرفرات لينكس، أتمتة العمليات الأمنية، الاستجابة للحوادث، وأمن السحابة. دول خدمات جاية مع نمو RPL — شوف قسم خدماتنا الجاية للتفاصيل.",
-chatbot_answer_projects:"دلوقتي بنشتغل على RPL Recon Toolkit وRPL Vulnerability Scanner وRPL Automation Scripts، وكلهم لسه تحت التطوير. شوف قسم مشاريعنا لمزيد من التفاصيل.",
-chatbot_answer_about:"RPL Cyber Security شركة ناشئة لسه في أول خطواتها، بنبني فيها الأساس بتاعنا من بحث وأدوات وخدمات جاية. دلوقتي بنركز على التعلم العملي والبحث الأمني.",
-chatbot_answer_contact:"تقدر تتواصل معانا عن طريق الإيميل أو ديسكورد أو واتساب أو إنستجرام — انزل لقسم تواصل معانا تحت هتلاقي اللينكات مباشرة."
+footer_rights:"جميع الحقوق محفوظة."
 
 }
 
@@ -306,7 +276,6 @@ let currentLang = localStorage.getItem("language") || "en";
 
 let resetTyping = () => {};
 let resetTerminal = () => {};
-let resetChatbotUI = () => {};
 
 function applyLanguage(lang){
 
@@ -337,7 +306,6 @@ function applyLanguage(lang){
 
     resetTyping();
     resetTerminal();
-    resetChatbotUI();
 
 }
 
@@ -822,224 +790,6 @@ console.log(
 "color:white;font-size:13px;"
 
 );
-
-/* ==========================
-   Chatbot (FAQ Assistant)
-========================== */
-
-const chatbotToggle = document.getElementById("chatbotToggle");
-const chatbotWindow = document.getElementById("chatbotWindow");
-const chatbotClose = document.getElementById("chatbotClose");
-const chatbotMessages = document.getElementById("chatbotMessages");
-const chatbotSuggestions = document.getElementById("chatbotSuggestions");
-const chatbotForm = document.getElementById("chatbotForm");
-const chatbotInput = document.getElementById("chatbotInput");
-
-/* Suggestion chips shown when the chat first opens */
-const chatbotTopics = [
-
-    {
-        id:"services",
-        keywords:["service","services","offer","provide","pricing","price",
-                   "خدم","خدمة","خدمات","بتقدموا","تقدموا","اسعار","سعر"],
-        labelKey:"chatbot_topic_services",
-        answerKey:"chatbot_answer_services"
-    },
-    {
-        id:"projects",
-        keywords:["project","projects","tool","tools",
-                   "مشروع","مشاريع","اداة","أداة"],
-        labelKey:"chatbot_topic_projects",
-        answerKey:"chatbot_answer_projects"
-    },
-    {
-        id:"about",
-        keywords:["who","about","company","rpl",
-                   "مين","انتوا","إنتوا","شركة","تعريف","احنا"],
-        labelKey:"chatbot_topic_about",
-        answerKey:"chatbot_answer_about"
-    },
-    {
-        id:"contact",
-        keywords:["contact","email","reach","talk","phone","discord","whatsapp","instagram",
-                   "تواصل","ايميل","إيميل","واتس","واتساب","انستجرام","إنستجرام","ديسكورد","كلم","اتصال"],
-        labelKey:"chatbot_topic_contact",
-        answerKey:"chatbot_answer_contact"
-    }
-
-];
-
-/* Fixed short replies for greetings / thanks — checked before anything else */
-const chatbotIntents = [
-    {
-        id:"greeting",
-        keywords:["hi","hello","hey","good morning","good evening",
-                   "سلام","اهلا","أهلا","مرحبا","صباح الخير","مساء الخير","ازيك","إزيك","هاي"],
-        replyKey:"chatbot_intent_greeting"
-    },
-    {
-        id:"thanks",
-        keywords:["thanks","thank you","thx","appreciate",
-                   "شكرا","شكرًا","متشكر","تسلم","الله يخليك"],
-        replyKey:"chatbot_intent_thanks"
-    }
-];
-
-/* Narrow, specific matches for individual services/projects — reuse the
-   exact same title/desc translation keys already used elsewhere on the
-   site, so the chatbot always stays in sync with the page content. */
-const chatbotKnowledge = [
-
-    { keywords:["pentest","penetration","اختراق","بنتست"], titleKey:"service1_title", descKey:"service1_desc" },
-    { keywords:["consult","advice","استشار"], titleKey:"service2_title", descKey:"service2_desc" },
-    { keywords:["assessment","risk assessment","تقييم"], titleKey:"service3_title", descKey:"service3_desc" },
-    { keywords:["secure web","web development","website security","تطوير مواقع","موقع آمن"], titleKey:"service4_title", descKey:"service4_desc" },
-    { keywords:["linux hardening","harden linux","linux server","تحصين","لينكس"], titleKey:"service5_title", descKey:"service5_desc" },
-    { keywords:["security automation","automate","اتمتة العمليات","أتمتة العمليات"], titleKey:"service6_title", descKey:"service6_desc" },
-    { keywords:["incident response","incident","استجابة","حادث امني","حادث أمني"], titleKey:"service7_title", descKey:"service7_desc" },
-    { keywords:["cloud security","cloud","كلاود","سحابة"], titleKey:"service8_title", descKey:"service8_desc" },
-
-    { keywords:["recon","reconnaissance","osint","استطلاع","اوسينت","أوسينت"], titleKey:"project1_title", descKey:"project1_desc" },
-    { keywords:["scanner","vulnerability scanner","سكانر","فحص ثغرات"], titleKey:"project2_title", descKey:"project2_desc" },
-    { keywords:["automation script","scripts","سكربتات"], titleKey:"project3_title", descKey:"project3_desc" }
-
-];
-
-let chatbotStarted = false;
-
-function addChatMsg(text,sender){
-
-    const msg = document.createElement("div");
-    msg.className = "chat-msg " + sender;
-    msg.textContent = text;
-    chatbotMessages.appendChild(msg);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
-}
-
-function renderChatbotSuggestions(){
-
-    chatbotSuggestions.innerHTML = "";
-
-    chatbotTopics.forEach(topic => {
-
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.textContent = translations[currentLang][topic.labelKey];
-        btn.addEventListener("click", () => handleTopic(topic));
-        chatbotSuggestions.appendChild(btn);
-
-    });
-
-}
-
-function handleTopic(topic){
-
-    addChatMsg(translations[currentLang][topic.labelKey],"user");
-
-    setTimeout(() => {
-        addChatMsg(translations[currentLang][topic.answerKey],"bot");
-    },300);
-
-}
-
-function findIntent(lower){
-
-    return chatbotIntents.find(intent =>
-        intent.keywords.some(k => lower.includes(k.toLowerCase()))
-    );
-
-}
-
-function findKnowledge(lower){
-
-    return chatbotKnowledge.find(item =>
-        item.keywords.some(k => lower.includes(k.toLowerCase()))
-    );
-
-}
-
-function findTopic(lower){
-
-    return chatbotTopics.find(topic =>
-        topic.keywords.some(k => lower.includes(k.toLowerCase()))
-    );
-
-}
-
-function getBotReply(text){
-
-    const lower = text.toLowerCase();
-
-    const intent = findIntent(lower);
-    if(intent) return translations[currentLang][intent.replyKey];
-
-    const knowledge = findKnowledge(lower);
-    if(knowledge){
-        const title = translations[currentLang][knowledge.titleKey];
-        const desc = translations[currentLang][knowledge.descKey];
-        return title + " — " + desc;
-    }
-
-    const topic = findTopic(lower);
-    if(topic) return translations[currentLang][topic.answerKey];
-
-    return translations[currentLang].chatbot_fallback;
-
-}
-
-function startChat(){
-
-    if(chatbotStarted) return;
-    chatbotStarted = true;
-
-    addChatMsg(translations[currentLang].chatbot_greeting,"bot");
-    renderChatbotSuggestions();
-
-}
-
-chatbotToggle.addEventListener("click", () => {
-
-    chatbotWindow.classList.toggle("open");
-
-    if(chatbotWindow.classList.contains("open")){
-        startChat();
-        chatbotInput.focus();
-    }
-
-});
-
-chatbotClose.addEventListener("click", () => {
-
-    chatbotWindow.classList.remove("open");
-
-});
-
-chatbotForm.addEventListener("submit", (e) => {
-
-    e.preventDefault();
-
-    const text = chatbotInput.value.trim();
-    if(!text) return;
-
-    addChatMsg(text,"user");
-    chatbotInput.value = "";
-
-    const reply = getBotReply(text);
-
-    setTimeout(() => {
-        addChatMsg(reply,"bot");
-    },300);
-
-});
-
-resetChatbotUI = () => {
-
-    if(chatbotStarted){
-        renderChatbotSuggestions();
-    }
-
-};
 
 /* ==========================
    Initial Language Apply
